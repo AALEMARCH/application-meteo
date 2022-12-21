@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'Hind-Regular';
+    src: url('../media/police/Hind-Regular.ttf');
+}
+
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+body{
+    max-width: 1200px;
+    margin: auto;
+    min-height: 100vh;
+    height: 100%;
+    background: url(../media/test.jpg) no-repeat center/cover;
+    font-size: 0.9rem;
+    font-family: Hind-Regular;
+    color: #DFE5F7;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: sticky;
+    top: 0.5rem;
+    z-index: 999;
+}
+
+main{
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+/******************** section Entete ***********************/
+.hautDePage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hautDePage__ville{
+    font-size: 1.5rem;
+}
+.hautDePage__degre{
+    display: flex;
+    flex-direction: row;
+}
+
+.hautDePage__degre--style{
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.hautDePage__degre--operateur{
+    padding-top: 1rem;
+}
+
+.hautDePage__temps{
+    font-size: 0.8rem;
+}
+
+.hautDePage__indice{
+    color: #DFE5F7;
+    background-color: #243B5E;
+    font-size: 0.7rem;
+    border: 1px solid white;
+    padding: 0.2rem;
+    
+}
+
+/****************** section prevision ******************/
+
+.prevision{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-top: 2rem;
+   margin-bottom: 2rem;
+}
+
+.prevision__jours--Un{
+    background-color: rgba(36, 59, 94, 0.5);
+    margin-bottom: 0.5rem;
+    height: 3rem;
+}
+
+.prevision__jours--Deux{
+    background-color: rgba(36, 59, 94, 0.5);
+    margin-bottom: 0.5rem;
+    height: 3rem;
+}
+
+.prevision__jours--Trois{
+    background-color: rgba(36, 59, 94, 0.5);
+    margin-bottom: 0.5rem;
+    height: 3rem;
+}
+
+.prevision__btn{
+    height: 2rem;
+    padding: 0.5rem;
+    background-color: #243B5E;
+    color: #DFE5F7;
+}
+
+/******************* section jour *********************/
+
+
+
+.jour__horaire{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+}
+
+.jour__horaire--Un{
+    background-color: rgba(36, 59, 94, 0.5);  
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10px;
+}
+
+.jour__horaire--Deux{
+    background-color: rgba(36, 59, 94, 0.5);  
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10px;
+}
+
+.jour__horaire--Trois{
+    background-color: rgba(36, 59, 94, 0.5);  
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10px;
+}
+
+.jour__technique{
+    background-color: rgba(36, 59, 94, 0.5);
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.jour__indice{
+    background-color: rgba(36, 59, 94, 0.5);
+}
+
+
+/********************** footer ************************/
+footer{
+    background-color: rgba(36, 59, 94, 0.5);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

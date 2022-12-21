@@ -2,14 +2,92 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Application Meteo</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <meta name="title" content="Application Meteo homepage">
+
+    <meta name="description" content="Application Meteo - Site web qui fait appel à l'API OpenWeather - travaille en équipe avec Antoine Lemarchand et Steeve Mellet - Développeur Web - HTML - CSS - HTMX - Javascript -">
+
+    <script src="https://kit.fontawesome.com/fb14b9bbe3.js" crossorigin="anonymous"></script>
+
 </head>
-<body>
-    <button class="ApiTest">tentative d'appel api</button>
-    <div class="resAPI"></div>
- <script src="index.js"></script>
+
+<body>   
+    <header>
+        <label for="cityName"><i class="fa-solid fa-magnifying-glass"></i></label>
+        <input type="text" id="name" name="name" required
+        minlength="1" maxlength="47" placeholder="Saisir la ville">
+
+        <button class="ApiTest" type="button" onclick="getValue()">Envoie</button>
+    </header> 
+
+<main>     
+
+    <section class="enTete">    
+        <div class="hautDePage">
+            <p class="hautDePage__ville"></p>
+            <div class="hautDePage__degre">
+               <div class="hautDePage__degre--style">3</div> 
+               <div class="hautDePage__degre--operateur">°C</div>
+            </div> 
+            <div class="hautDePage__temps">Nuageux</div>
+            <div class="hautDePage__indice">IQA 40</div>  
+        </div>             
+    </section>
+
+    <section class="prevision">
+        <p>Prévision sur trois jours</p>
+        <div class="prevision__jours">
+            <div class="prevision__jours--Un">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, quibusdam.</div>
+            <div class="prevision__jours--Deux">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, earum.</div>
+            <div class="prevision__jours--Trois">Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, repudiandae.</div>
+        </div>
+        <button class="prevision__btn">Prévision sur cinq jours</button>
+    </section>
+
+    <section class="jour">
+        <div class="jour__horaire">
+            <div class="jour__horaire--Un">Lorem, ipsum.</div>
+            <div class="jour__horaire--Deux">Lorem, ipsum.</div>
+            <div class="jour__horaire--Trois">Lorem, ipsum.</div>
+        </div>
+        <div class="jour__technique">
+            <div class="jour__technique--colonneUn">
+                <div><p>Ressentie</p><div>30°C</div></div>
+                <div><p>Risque de pluie</p><div>0%</div></div>
+                <div><p>Vitesse du vent</p><div>10km/h</div></div>
+            </div>
+            <div class="jour__technique--colonneDeux">
+                <div><p>Humidité</p><div>5%</div></div>
+                <div><p>Pression</p><div>0.5bar</div></div>
+                <div><p>Indice UV</p><div>8</div></div>
+            </div>           
+        </div>
+        <div class="jour__indice">
+            <p>Indice de qualité de l'air (IQA)</p>
+            <div>IMG 30</div>
+        </div>
+    </section>
+
+</main>
+
+    <footer>
+        <div>
+            <P>Lien API:</P> 
+            <a href="https://openweathermap.org/">OpenWeather</a>
+        </div>
+        <div>
+            <p>Equipe technique:</p>
+            <a href="https://aalemarch.github.io/ReactPortfolio/">portfolio Lemarchand Antoine</a>
+            <div>portfolio Mellet Steeve</div>
+        </div>
+    </footer>
+  
+ <script src="js/index.js"></script>
 </body>
 </html>
