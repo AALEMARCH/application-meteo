@@ -24,7 +24,7 @@
         minlength="1" maxlength="47" placeholder="Saisir la ville">
 
         <button class="ApiTest" type="button" onclick="getValue()">Envoie</button>
-    </header> 
+    </header>
 
 <main>     
 
@@ -58,19 +58,67 @@
         </div>
         <div class="jour__technique">
             <div class="jour__technique--colonneUn">
-                <div><p>Ressentie</p><div>30°C</div></div>
-                <div><p>Risque de pluie</p><div>0%</div></div>
-                <div><p>Vitesse du vent</p><div>10km/h</div></div>
+                <div>
+                    <p class="jour__technique--ressentie">
+                        Ressentie
+                    </p>
+                    <div class="jour__technique--ressentieV">
+                        <span id="ressentie">30</span>
+                        <span>°C</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="jour__technique--pluie">
+                        Risque de pluie
+                    </p>
+                    <div class="jour__technique--pluieV">
+                        <span id="risque-pluie">0</span>
+                        <span>%</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="jour__technique--vent">
+                        Vitesse du vent
+                    </p>
+                    <div class="jour__technique--ventV">
+                        <span id="vent">10</span>
+                        <span>km/h</span>
+                    </div>
+                </div>
             </div>
+
             <div class="jour__technique--colonneDeux">
-                <div><p>Humidité</p><div>5%</div></div>
-                <div><p>Pression</p><div>0.5bar</div></div>
-                <div><p>Indice UV</p><div>8</div></div>
+                <div>
+                    <p class="jour__technique--humidite">
+                        Humidité
+                    </p>
+                    <div class="jour__technique--humiditeV">
+                        <span id="humidite">5</span>
+                        <span>%</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="jour__technique--pression">
+                        Pression
+                    </p>
+                    <div class="jour__technique--pressionV">
+                        <span id="pression">0.5</span>
+                        <span>bar</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="jour__technique--uv">
+                        Indice UV
+                </p>
+                    <div class="jour__technique--uvV">
+                        <span id="indice-UV">8</span>
+                    </div>
+                </div>
             </div>           
         </div>
         <div class="jour__indice">
             <p>Indice de qualité de l'air (IQA)</p>
-            <div>IMG 30</div>
+            <div id="indice-air">IMG 30</div>
         </div>
     </section>
 
