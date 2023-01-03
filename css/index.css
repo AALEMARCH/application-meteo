@@ -15,7 +15,7 @@ body{
     margin: auto;
     min-height: 100vh;
     height: 100%;
-    background: url(../media/test.jpg) no-repeat center/cover;
+    background: url(../media/pluie.jpg) no-repeat center/cover;
     font-size: 0.9rem;
     font-family: Hind-Regular;
     color: #DFE5F7;
@@ -82,32 +82,31 @@ main{
    justify-content: center;
    align-items: center;
    margin-top: 2rem;
-   margin-bottom: 2rem;
+   margin-bottom: 1rem;
 }
 
-.prevision__jours--Un{
+.prevision__jours__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     background-color: rgba(36, 59, 94, 0.5);
+    min-width: 100vw;
     margin-bottom: 0.5rem;
     height: 3rem;
 }
 
-.prevision__jours--Deux{
-    background-color: rgba(36, 59, 94, 0.5);
-    margin-bottom: 0.5rem;
-    height: 3rem;
-}
-
-.prevision__jours--Trois{
-    background-color: rgba(36, 59, 94, 0.5);
-    margin-bottom: 0.5rem;
-    height: 3rem;
-}
-
-.prevision__btn{
-    height: 2rem;
-    padding: 0.5rem;
-    background-color: #243B5E;
+.prevision__titre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0rem auto 1rem auto;
     color: #DFE5F7;
+    width: 80%;
+    background-color: #243B5E;
+    border: 1px solid white;
+    padding: 0.2rem;
+    padding: 0.5rem;
 }
 
 /******************* section jour *********************/
@@ -151,9 +150,41 @@ main{
 }
 
 .jour__indice{
-    background-color: rgba(36, 59, 94, 0.5);
+    margin-bottom: -2rem;
 }
 
+.IQA__btn{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    height: 2rem;
+    padding: 0.5rem;
+    background-color: #243B5E;
+    color: #DFE5F7;
+    
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    background-color: rgba(36, 59, 94, 0.8);
+    color: #DFE5F7;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+  
+  #myBtn:hover {
+    background-color: #555;
+  }
 
 /********************** footer ************************/
 footer{

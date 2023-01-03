@@ -41,16 +41,33 @@
     </section>
 
     <section class="prevision">
-        <p>Prévision sur trois jours</p>
+        <p>Prévision sur cinq jours</p>
         <div class="prevision__jours">
-            <div class="prevision__jours--Un">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, quibusdam.</div>
-            <div class="prevision__jours--Deux">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, earum.</div>
-            <div class="prevision__jours--Trois">Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, repudiandae.</div>
+            <div class="prevision__jours__container">
+                <div class="prevision__jours__container--dateUn"></div>
+                <div class="prevision__jours__container--meteoUn"></div>
+            </div>
+            <div class="prevision__jours__container">
+                <div class="prevision__jours__container--dateDeux"></div>
+                <div class="prevision__jours__container--meteoDeux"></div>
+            </div>
+            <div class="prevision__jours__container">
+                <div class="prevision__jours__container--dateTrois"></div>
+                <div class="prevision__jours__container--meteoTrois"></div>
+            </div>
+            <div class="prevision__jours__container">
+                <div class="prevision__jours__container--dateQuatre"></div>
+                <div class="prevision__jours__container--meteoQuatre"></div>
+            </div>
+            <div class="prevision__jours__container">
+                <div class="prevision__jours__container--dateCinq"></div>
+                <div class="prevision__jours__container--meteoCinq"></div>
+            </div>
         </div>
-        <button class="prevision__btn">Prévision sur cinq jours</button>
     </section>
 
     <section class="jour">
+        <p class="prevision__titre">Prévisions horaires sur 24 heures</p>
         <div class="jour__horaire">
             <div class="jour__horaire--Un">Lorem, ipsum.</div>
             <div class="jour__horaire--Deux">Lorem, ipsum.</div>
@@ -65,15 +82,6 @@
                     <div class="jour__technique--ressentieV">
                         <span id="ressentie"></span>
                         <span>°C</span>
-                    </div>
-                </div>
-                <div>
-                    <p class="jour__technique--pluie">
-                        Risque de pluie
-                    </p>
-                    <div class="jour__technique--pluieV">
-                        <span id="risque-pluie"></span>
-                        <span>%</span>
                     </div>
                 </div>
                 <div>
@@ -106,10 +114,6 @@
                         <span>mbar</span>
                     </div>
                 </div>
-                <div>
-                    <p class="jour__technique--uv">
-                        Indice UV
-                </p>
                     <div class="jour__technique--uvV">
                         <span id="indice-UV"></span>
                     </div>
@@ -117,10 +121,11 @@
             </div>           
         </div>
         <div class="jour__indice">
-            <p>Indice de qualité de l'air (IQA)</p>
-            <div id="indice-air">IMG 30</div>
+            <button class="IQA__btn">Plus de détails sur l'IQA</button>
         </div>
     </section>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Haut de page</button>
 
 </main>
 

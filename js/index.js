@@ -1,3 +1,26 @@
+// boutton scroll to top
+let mybutton = document.getElementById("myBtn");
+
+// montre le boutton apres 20px de scroll
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// Retour en haut de page
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+// boutton de selection de la ville
 let btn = document.getElementsByClassName("ApiTest");
 
 btn[0].addEventListener("click", (e) => {
@@ -100,15 +123,109 @@ btn[0].addEventListener("click", (e) => {
           humiditeS.textContent = Math.round(humiditeValue);
           pressionS.textContent = Math.round(pressionValue);
           vitesseVentS.textContent = Math.round(vitesseVentValue * 100) / 100;
+
+          //selection de l'image de fond suivant la météo
+          if (meteo.weather[0].description === "nuageux") {
+            document.body.style.backgroundImage = "url('./media/nuage.jpg')";
+          } else if (meteo.weather[0].description === "ciel dégagé") {
+            document.body.style.backgroundImage = "url('./media/soleil.jpg')";
+          } else if (meteo.weather[0].description === "légère pluie") {
+            document.body.style.backgroundImage = "url('./media/pluie.jpg')";
+          } else {
+            document.body.style.backgroundImage = "url('./media/soleil.jpg')";
+          }
         });
 
       // Appel API sur 5 jours avec une latence de 3 heures
       fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${data[0].lat}&lon=${data[0].lon}&appid=${APIKEY}`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${data[0].lat}&lon=${data[0].lon}&appid=${APIKEY}&units=metric&lang=fr`
       )
         .then((res) => res.json())
         .then((prevision) => {
           console.log(prevision);
+
+          const previsionUn = document.querySelector(
+            ".prevision__jours__container--dateUn"
+          );
+          const previsionDeux = document.querySelector(
+            ".prevision__jours__container--dateDeux"
+          );
+          const previsionTrois = document.querySelector(
+            ".prevision__jours__container--dateTrois"
+          );
+          const previsionQuatre = document.querySelector(
+            ".prevision__jours__container--dateQuatre"
+          );
+          const previsionCinq = document.querySelector(
+            ".prevision__jours__container--dateCinq"
+          );
+
+          const previsionMeteoUn = document.querySelector(
+            ".prevision__jours__container--meteoUn"
+          );
+          const previsionMeteoDeux = document.querySelector(
+            ".prevision__jours__container--meteoDeux"
+          );
+          const previsionMeteoTrois = document.querySelector(
+            ".prevision__jours__container--meteoTrois"
+          );
+          const previsionMeteoQuatre = document.querySelector(
+            ".prevision__jours__container--meteoQuatre"
+          );
+          const previsionMeteoCinq = document.querySelector(
+            ".prevision__jours__container--meteoCinq"
+          );
+
+          let previsionUnValue = prevision.list[0].dt_txt;
+          let previsionDeuxValue = prevision.list[8].dt_txt;
+          let previsionTroisValue = prevision.list[16].dt_txt;
+          let previsionQuatreValue = prevision.list[24].dt_txt;
+          let previsionCinqValue = prevision.list[32].dt_txt;
+
+          const dateUn = new Date(previsionUnValue);
+          const dateDeux = new Date(previsionDeuxValue);
+          const dateTrois = new Date(previsionTroisValue);
+          const dateQuatre = new Date(previsionQuatreValue);
+          const dateCinq = new Date(previsionCinqValue);
+
+          const options = {
+            weekday: "long",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          };
+
+          previsionUn.textContent = dateUn.toLocaleDateString("fr-fr", options);
+          previsionMeteoUn.textContent =
+            prevision.list[0].weather[0].description;
+
+          previsionDeux.textContent = dateDeux.toLocaleDateString(
+            "fr-fr",
+            options
+          );
+          previsionMeteoDeux.textContent =
+            prevision.list[8].weather[0].description;
+
+          previsionTrois.textContent = dateTrois.toLocaleDateString(
+            "fr-fr",
+            options
+          );
+          previsionMeteoTrois.textContent =
+            prevision.list[16].weather[0].description;
+
+          previsionQuatre.textContent = dateQuatre.toLocaleDateString(
+            "fr-fr",
+            options
+          );
+          previsionMeteoQuatre.textContent =
+            prevision.list[24].weather[0].description;
+
+          previsionCinq.textContent = dateCinq.toLocaleDateString(
+            "fr-fr",
+            options
+          );
+          previsionMeteoCinq.textContent =
+            prevision.list[32].weather[0].description;
         });
     });
 });
