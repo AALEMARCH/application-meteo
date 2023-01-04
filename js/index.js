@@ -125,14 +125,35 @@ btn[0].addEventListener("click", (e) => {
           vitesseVentS.textContent = Math.round(vitesseVentValue * 100) / 100;
 
           //selection de l'image de fond suivant la météo
-          if (meteo.weather[0].description === "nuageux") {
-            document.body.style.backgroundImage = "url('./media/nuage.jpg')";
-          } else if (meteo.weather[0].description === "ciel dégagé") {
-            document.body.style.backgroundImage = "url('./media/soleil.jpg')";
-          } else if (meteo.weather[0].description === "légère pluie") {
-            document.body.style.backgroundImage = "url('./media/pluie.jpg')";
-          } else {
-            document.body.style.backgroundImage = "url('./media/soleil.jpg')";
+          let valeurMet = meteo.weather[0].description;
+          switch (valeurMet) {
+            case "nuageux":
+              document.body.style.backgroundImage =
+                "url('./media/nuageux.webp')";
+              break;
+            case "peu nuageux":
+              document.body.style.backgroundImage =
+                "url('./media/nuageux.webp')";
+              break;
+            case "légère pluie":
+              document.body.style.backgroundImage =
+                "url('./media/légèrePluie.webp')";
+              break;
+            case "ciel dégagé":
+              document.body.style.backgroundImage =
+                "url('./media/cielDégagé.webp')";
+              break;
+            case "couvert":
+              document.body.style.backgroundImage =
+                "url('./media/couvert.webp')";
+              break;
+            case "bruine légère":
+              document.body.style.backgroundImage =
+                "url('./media/bruineLégère.webp')";
+              break;
+            default:
+              document.body.style.backgroundImage =
+                "url('./media/nuageux.webp')";
           }
         });
 
@@ -226,6 +247,39 @@ btn[0].addEventListener("click", (e) => {
           );
           previsionMeteoCinq.textContent =
             prevision.list[32].weather[0].description;
+
+          // selection des horaires sur 24 heures uniquement
+          let horaires = prevision.list;
+          let horairesJournée = horaires.slice([0], [9]);
+          console.log(horairesJournée);
+
+          const jourHoraire = document.querySelector(".jour__horaire");
+
+          for (const element of horairesJournée) {
+            let horaireIndividuelConteneur = document.createElement("div");
+            jourHoraire.appendChild(horaireIndividuelConteneur);
+            horaireIndividuelConteneur.setAttribute(
+              "class",
+              "jour__horaire__container"
+            );
+
+            let horaireArray = [];
+            horaireArray.push(element.dt_txt);
+            horaireArray.push(element.main.temp);
+            horaireArray.push(element.weather[0].description);
+            horaireArray.push(element.wind.speed);
+            console.log(horaireArray);
+
+            for (const element of horaireArray) {
+              let horaireIndividuel = document.createElement("div");
+              horaireIndividuelConteneur.appendChild(horaireIndividuel);
+              horaireIndividuel.setAttribute(
+                "class",
+                "jour__horaire__container--value"
+              );
+              horaireIndividuel.innerHTML = element;
+            }
+          }
         });
     });
 });
