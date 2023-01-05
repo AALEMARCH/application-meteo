@@ -130,30 +130,58 @@ btn[0].addEventListener("click", (e) => {
             case "nuageux":
               document.body.style.backgroundImage =
                 "url('./media/nuageux.webp')";
+              document.querySelector(".hautDePage").style.color = "white";
+              document.querySelector(".prevision__titreUn").style.color =
+                "white";
               break;
             case "peu nuageux":
               document.body.style.backgroundImage =
                 "url('./media/nuageux.webp')";
+              document.querySelector(".hautDePage").style.color = "white";
+              document.querySelector(".prevision__titreUn").style.color =
+                "white";
               break;
             case "légère pluie":
               document.body.style.backgroundImage =
                 "url('./media/légèrePluie.webp')";
+              document.querySelector(".hautDePage").style.color = "white";
+              document.querySelector(".prevision__titreUn").style.color =
+                "white";
               break;
             case "ciel dégagé":
               document.body.style.backgroundImage =
                 "url('./media/cielDégagé.webp')";
+              document.querySelector(".hautDePage").style.color = "black";
+              document.querySelector(".prevision__titreUn").style.color =
+                "black";
               break;
             case "couvert":
               document.body.style.backgroundImage =
                 "url('./media/couvert.webp')";
+              document.querySelector(".hautDePage").style.color = "black";
+              document.querySelector(".prevision__titreUn").style.color =
+                "black";
               break;
             case "bruine légère":
               document.body.style.backgroundImage =
                 "url('./media/bruineLégère.webp')";
+              document.querySelector(".hautDePage").style.color = "white";
+              document.querySelector(".prevision__titreUn").style.color =
+                "white";
+              break;
+            case "brume":
+              document.body.style.backgroundImage =
+                "url('./media/bruineLégère.webp')";
+              document.querySelector(".hautDePage").style.color = "white";
+              document.querySelector(".prevision__titreUn").style.color =
+                "white";
               break;
             default:
               document.body.style.backgroundImage =
                 "url('./media/nuageux.webp')";
+              document.querySelector(".hautDePage").style.color = "white";
+              document.querySelector(".prevision__titreUn").style.color =
+                "white";
           }
         });
 
@@ -263,11 +291,13 @@ btn[0].addEventListener("click", (e) => {
               "jour__horaire__container"
             );
 
+            let heures = element.dt_txt.slice(10, 16);
+
             let horaireArray = [];
-            horaireArray.push(element.dt_txt);
-            horaireArray.push(element.main.temp);
+            horaireArray.push(heures);
+            horaireArray.push(`${element.main.temp} °C`);
             horaireArray.push(element.weather[0].description);
-            horaireArray.push(element.wind.speed);
+            horaireArray.push(`${element.wind.speed} km/h`);
             console.log(horaireArray);
 
             for (const element of horaireArray) {

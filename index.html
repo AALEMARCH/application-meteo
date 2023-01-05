@@ -19,11 +19,17 @@
 
 <body>   
     <header>
-        <label for="cityName"><i class="fa-solid fa-magnifying-glass"></i></label>
-        <input type="text" id="name" name="name" required
-        minlength="1" maxlength="47" placeholder="Saisir la ville">
 
-        <button class="ApiTest" type="button">Envoie</button>
+        <form class="recherche__ville" method="get"> 
+            <input type="text" class="recherche__ville__zoneTexte" id="name" name="name" required
+            minlength="1" maxlength="47" placeholder="Saisir la ville">
+
+            <button class="ApiTest" type="button" aria-label="bouton d'envoie du formulaire">
+                <span class="ApiTest__textIcon">Rechercher</span>
+                <span class="ApiTest__icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </button>
+        </form>
+
     </header>
 
 <main>     
@@ -41,7 +47,7 @@
     </section>
 
     <section class="prevision">
-        <p>Prévision sur cinq jours</p>
+        <p class="prevision__titreUn">Prévision sur cinq jours</p>
         <div class="prevision__jours">
             <div class="prevision__jours__container">
                 <div class="prevision__jours__container--dateUn"></div>
@@ -119,7 +125,7 @@
             </div>           
         </div>
         <div class="jour__indice">
-            <button class="IQA__btn">Plus de détails sur l'IQA</button>
+            <button class="IQA__btn" aria-label="chemin vers la page de détail de l'IQA">Plus de détails sur l'IQA</button>
         </div>
     </section>
 
@@ -139,6 +145,6 @@
         </div>
     </footer>
   
- <script src="js/index.js"></script>
+ <script src="js/index.js" defer></script>
 </body>
 </html>

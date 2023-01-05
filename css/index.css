@@ -18,7 +18,7 @@ body{
     background: url(../media/nuageux.webp) no-repeat center/cover;
     font-size: 0.9rem;
     font-family: Hind-Regular;
-    color: #DFE5F7;
+    color: #f2f2f2;
 }
 
 header{
@@ -28,6 +28,7 @@ header{
     position: sticky;
     top: 0.5rem;
     z-index: 999;
+    width: 100%;
 }
 
 main{
@@ -35,6 +36,41 @@ main{
     position: relative;
     padding-bottom: 2rem;
 }
+
+/******************** header *******************************/
+.recherche__ville{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recherche__ville__zoneTexte{
+    border-right: none;
+  border-left: none;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 0 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 60%;
+}
+
+.ApiTest {
+    background: #243B5E;
+    border: none;
+    color: #f2f2f2;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0 15px 15px 0;
+    padding: 0 24px;
+    cursor: pointer;
+    width: 20%;
+  }
+
+  .ApiTest__textIcon{
+    display: none;
+  }
 
 /******************** section Entete ***********************/
 .hautDePage{
@@ -127,12 +163,18 @@ main{
 }
 
 .jour__horaire__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     margin: 1rem;
 }
 
 .jour__horaire__container--value{
     max-height: 100%;
-    font-size: 0.8rem;
+    width: 4rem;
+    padding: 0.2rem;
+    font-size: 0.7rem;
 }
 
 .jour__technique{
@@ -192,4 +234,16 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+/******************************************************/
+/******************************************************/
+/********************** responsive ********************/
+@media screen and (min-width: 768px){
+    .ApiTest__textIcon{
+        display: block;
+      }
+    .ApiTest__icon{
+        display: none;
+    }
 }
