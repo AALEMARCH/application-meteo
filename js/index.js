@@ -1,29 +1,96 @@
 // boutton scroll to top
-let mybutton = document.getElementById("myBtn");
+const scrollBtn = document.getElementById("myBtn");
 
 // montre le boutton apres 20px de scroll
 window.onscroll = function () {
   scrollFunction();
 };
 
+// Fonction pour obtenir la position actuelle de défilement
+function getScrollPosition() {
+  return Math.max(
+    window.pageYOffset,
+    document.documentElement.scrollTop,
+    document.body.scrollTop
+  );
+}
+
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
+  if (getScrollPosition() > 20) {
+    scrollBtn.style.display = "block";
   } else {
-    mybutton.style.display = "none";
+    scrollBtn.style.display = "none";
   }
 }
 
 // Retour en haut de page
 function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+  window.scrollTo(0, 0);
 }
 
-// boutton de selection de la ville
-let btn = document.getElementsByClassName("ApiTest");
+// Fonction pour mettre à jour les informations d'horaires
+const updateHoraires = (horairesJournee) => {
+  // Constante pour les options de formatage des horaires
+  const TIME_OPTIONS = {
+    hour: "2-digit",
+    minute: "2-digit",
+  };
 
-btn[0].addEventListener("click", (e) => {
+  // Fonction pour formatter les horaires
+  const formatTime = (time) =>
+    new Date(time).toLocaleTimeString("fr-fr", TIME_OPTIONS);
+
+  // Vérifier que les données sont valides
+  if (!horairesJournee) throw new Error("Données d'horaires manquantes");
+
+  // Récupérer l'élément conteneur des horaires
+  const jourHoraire = document.querySelector(".jour__horaire");
+
+  // Supprimer les enfants actuels de l'élément conteneur
+  while (jourHoraire.firstChild) {
+    jourHoraire.removeChild(jourHoraire.firstChild);
+  }
+
+  // boucle pour remplir les informations dans les éléments d'horaires
+  for (const horaire of horairesJournee) {
+    let horaireIndividuelConteneur = document.createElement("div");
+    jourHoraire.appendChild(horaireIndividuelConteneur);
+    horaireIndividuelConteneur.setAttribute(
+      "class",
+      "jour__horaire__container"
+    );
+
+    // ajouter une option (aujourdhui / demain) au tableau horaireList
+    function isToday(timestamp) {
+      let date = new Date(timestamp * 1000);
+      let today = new Date();
+      return date.toDateString() === today.toDateString();
+    }
+
+    let horaireList = [
+      isToday(horaire.dt) === true ? "aujourd'hui" : "demain",
+      formatTime(horaire.dt_txt),
+      `${horaire.main.temp} °C`,
+      horaire.weather[0].description,
+      `${horaire.wind.speed} km/h`,
+    ];
+
+    for (const info of horaireList) {
+      let horaireIndividuel = document.createElement("div");
+      horaireIndividuelConteneur.appendChild(horaireIndividuel);
+      horaireIndividuel.setAttribute(
+        "class",
+        "jour__horaire__container--value"
+      );
+      horaireIndividuel.innerHTML = info;
+    }
+  }
+};
+
+// boutton de sélection de la ville
+const btn = document.querySelector(".ApiTest");
+
+btn.addEventListener("click", (e) => {
   e.preventDefault();
 
   let input = document.getElementById("name").value;
@@ -42,8 +109,8 @@ btn[0].addEventListener("click", (e) => {
       console.log(data[0].lat);
       console.log(data[0].lon);
 
-      const htmlValue = document.querySelector(".hautDePage__ville");
-      htmlValue.textContent = data[0].name;
+      const cityName = document.querySelector(".hautDePage__ville");
+      cityName.textContent = data[0].name;
 
       // Creer une page au click sur IQA avec tous les indices de pollution detailler
       // appel api des donnée de polution
@@ -89,6 +156,9 @@ btn[0].addEventListener("click", (e) => {
           } else {
             iqaValueS.textContent = `IQA - indisponible`;
           }
+        })
+        .catch((error) => {
+          console.error(error);
         });
 
       // appel api de la météo actuelle et conversion en degree celcius
@@ -183,6 +253,9 @@ btn[0].addEventListener("click", (e) => {
               document.querySelector(".prevision__titreUn").style.color =
                 "white";
           }
+        })
+        .catch((error) => {
+          console.error(error);
         });
 
       // Appel API sur 5 jours avec une latence de 3 heures
@@ -276,40 +349,18 @@ btn[0].addEventListener("click", (e) => {
           previsionMeteoCinq.textContent =
             prevision.list[32].weather[0].description;
 
-          // selection des horaires sur 24 heures uniquement
+          // Sélection des horaires sur 24 heures uniquement
           let horaires = prevision.list;
-          let horairesJournée = horaires.slice([0], [9]);
-          console.log(horairesJournée);
+          let horairesJournee = horaires.slice(0, 9);
+          console.log(horairesJournee);
 
-          const jourHoraire = document.querySelector(".jour__horaire");
-
-          for (const element of horairesJournée) {
-            let horaireIndividuelConteneur = document.createElement("div");
-            jourHoraire.appendChild(horaireIndividuelConteneur);
-            horaireIndividuelConteneur.setAttribute(
-              "class",
-              "jour__horaire__container"
-            );
-
-            let heures = element.dt_txt.slice(10, 16);
-
-            let horaireArray = [];
-            horaireArray.push(heures);
-            horaireArray.push(`${element.main.temp} °C`);
-            horaireArray.push(element.weather[0].description);
-            horaireArray.push(`${element.wind.speed} km/h`);
-            console.log(horaireArray);
-
-            for (const element of horaireArray) {
-              let horaireIndividuel = document.createElement("div");
-              horaireIndividuelConteneur.appendChild(horaireIndividuel);
-              horaireIndividuel.setAttribute(
-                "class",
-                "jour__horaire__container--value"
-              );
-              horaireIndividuel.innerHTML = element;
-            }
-          }
+          updateHoraires(horairesJournee);
+        })
+        .catch((error) => {
+          console.error(error);
         });
+    })
+    .catch((error) => {
+      console.error(error);
     });
 });
