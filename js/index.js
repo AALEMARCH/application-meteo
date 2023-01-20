@@ -1,40 +1,45 @@
-// boutton scroll to top
-const scrollBtn = document.getElementById("myBtn");
-
-// montre le boutton apres 20px de scroll
-window.onscroll = function () {
-  scrollFunction();
+const TIME_OPTIONS = {
+  hour: "2-digit",
+  minute: "2-digit",
 };
 
-// Fonction pour obtenir la position actuelle de défilement
-function getScrollPosition() {
-  return Math.max(
-    window.pageYOffset,
-    document.documentElement.scrollTop,
-    document.body.scrollTop
-  );
-}
+function createScrollToTopButton() {
+  // boutton scroll to top
+  const scrollBtn = document.getElementById("myBtn");
 
-function scrollFunction() {
-  if (getScrollPosition() > 20) {
-    scrollBtn.style.display = "block";
-  } else {
-    scrollBtn.style.display = "none";
+  // Fonction pour obtenir la position actuelle de défilement
+  function getScrollPosition() {
+    return Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    );
   }
+
+  function scrollFunction() {
+    if (getScrollPosition() > 20) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  }
+
+  // montre le boutton apres 20px de scroll
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  // Retour en haut de page
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo(0, 0);
+  });
 }
 
-// Retour en haut de page
-function topFunction() {
-  window.scrollTo(0, 0);
-}
+createScrollToTopButton();
 
 // Fonction pour mettre à jour les informations d'horaires
 const updateHoraires = (horairesJournee) => {
   // Constante pour les options de formatage des horaires
-  const TIME_OPTIONS = {
-    hour: "2-digit",
-    minute: "2-digit",
-  };
 
   // Fonction pour formatter les horaires
   const formatTime = (time) =>
@@ -266,49 +271,29 @@ btn.addEventListener("click", (e) => {
         .then((prevision) => {
           console.log(prevision);
 
-          const previsionUn = document.querySelector(
-            ".prevision__jours__container--dateUn"
-          );
-          const previsionDeux = document.querySelector(
-            ".prevision__jours__container--dateDeux"
-          );
-          const previsionTrois = document.querySelector(
-            ".prevision__jours__container--dateTrois"
-          );
-          const previsionQuatre = document.querySelector(
-            ".prevision__jours__container--dateQuatre"
-          );
-          const previsionCinq = document.querySelector(
-            ".prevision__jours__container--dateCinq"
-          );
+          const previsionContainers = [
+            ".prevision__jours__container--dateUn",
+            ".prevision__jours__container--dateDeux",
+            ".prevision__jours__container--dateTrois",
+            ".prevision__jours__container--dateQuatre",
+            ".prevision__jours__container--dateCinq",
+          ];
 
-          const previsionMeteoUn = document.querySelector(
-            ".prevision__jours__container--meteoUn"
-          );
-          const previsionMeteoDeux = document.querySelector(
-            ".prevision__jours__container--meteoDeux"
-          );
-          const previsionMeteoTrois = document.querySelector(
-            ".prevision__jours__container--meteoTrois"
-          );
-          const previsionMeteoQuatre = document.querySelector(
-            ".prevision__jours__container--meteoQuatre"
-          );
-          const previsionMeteoCinq = document.querySelector(
-            ".prevision__jours__container--meteoCinq"
-          );
+          const previsionMeteos = [
+            ".prevision__jours__container--meteoUn",
+            ".prevision__jours__container--meteoDeux",
+            ".prevision__jours__container--meteoTrois",
+            ".prevision__jours__container--meteoQuatre",
+            ".prevision__jours__container--meteoCinq",
+          ];
 
-          let previsionUnValue = prevision.list[0].dt_txt;
-          let previsionDeuxValue = prevision.list[8].dt_txt;
-          let previsionTroisValue = prevision.list[16].dt_txt;
-          let previsionQuatreValue = prevision.list[24].dt_txt;
-          let previsionCinqValue = prevision.list[32].dt_txt;
-
-          const dateUn = new Date(previsionUnValue);
-          const dateDeux = new Date(previsionDeuxValue);
-          const dateTrois = new Date(previsionTroisValue);
-          const dateQuatre = new Date(previsionQuatreValue);
-          const dateCinq = new Date(previsionCinqValue);
+          const previsionValues = [
+            prevision.list[0].dt_txt,
+            prevision.list[8].dt_txt,
+            prevision.list[16].dt_txt,
+            prevision.list[24].dt_txt,
+            prevision.list[32].dt_txt,
+          ];
 
           const options = {
             weekday: "long",
@@ -317,37 +302,20 @@ btn.addEventListener("click", (e) => {
             day: "numeric",
           };
 
-          previsionUn.textContent = dateUn.toLocaleDateString("fr-fr", options);
-          previsionMeteoUn.textContent =
-            prevision.list[0].weather[0].description;
+          for (i = 0; i < previsionContainers.length; i++) {
+            const previsionContainer = document.querySelector(
+              previsionContainers[i]
+            );
+            const previsionMeteo = document.querySelector(previsionMeteos[i]);
+            const date = new Date(previsionValues[i]);
 
-          previsionDeux.textContent = dateDeux.toLocaleDateString(
-            "fr-fr",
-            options
-          );
-          previsionMeteoDeux.textContent =
-            prevision.list[8].weather[0].description;
-
-          previsionTrois.textContent = dateTrois.toLocaleDateString(
-            "fr-fr",
-            options
-          );
-          previsionMeteoTrois.textContent =
-            prevision.list[16].weather[0].description;
-
-          previsionQuatre.textContent = dateQuatre.toLocaleDateString(
-            "fr-fr",
-            options
-          );
-          previsionMeteoQuatre.textContent =
-            prevision.list[24].weather[0].description;
-
-          previsionCinq.textContent = dateCinq.toLocaleDateString(
-            "fr-fr",
-            options
-          );
-          previsionMeteoCinq.textContent =
-            prevision.list[32].weather[0].description;
+            previsionContainer.textContent = date.toLocaleDateString(
+              "fr-fr",
+              options
+            );
+            previsionMeteo.textContent =
+              prevision.list[i * 8].weather[0].description;
+          }
 
           // Sélection des horaires sur 24 heures uniquement
           let horaires = prevision.list;
