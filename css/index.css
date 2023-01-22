@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'Hind-Regular';
     src: url('../media/police/Hind-Regular.ttf');
@@ -15,10 +16,10 @@ body{
     margin: auto;
     min-height: 100vh;
     height: 100%;
-    background: url(../media/test.jpg) no-repeat center/cover;
+    background: url(../media/nuageux.webp) no-repeat center/cover;
     font-size: 0.9rem;
     font-family: Hind-Regular;
-    color: #DFE5F7;
+    color: #f2f2f2;
 }
 
 header{
@@ -28,6 +29,7 @@ header{
     position: sticky;
     top: 0.5rem;
     z-index: 999;
+    width: 100%;
 }
 
 main{
@@ -35,6 +37,41 @@ main{
     position: relative;
     padding-bottom: 2rem;
 }
+
+/******************** header *******************************/
+.recherche__ville{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recherche__ville__zoneTexte{
+    border-right: none;
+  border-left: none;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 0 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 60%;
+}
+
+.ApiTest {
+    background: #243B5E;
+    border: none;
+    color: #f2f2f2;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0 15px 15px 0;
+    padding: 0 24px;
+    cursor: pointer;
+    width: 20%;
+  }
+
+  .ApiTest__textIcon{
+    display: none;
+  }
 
 /******************** section Entete ***********************/
 .hautDePage{
@@ -74,85 +111,123 @@ main{
     
 }
 
-/****************** section prevision ******************/
 
+/****************** section prevision ******************/
 .prevision{
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
    margin-top: 2rem;
-   margin-bottom: 2rem;
+   margin-bottom: 1rem;
 }
 
-.prevision__jours--Un{
+.prevision__jours__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     background-color: rgba(36, 59, 94, 0.5);
+    min-width: 100vw;
     margin-bottom: 0.5rem;
     height: 3rem;
 }
 
-.prevision__jours--Deux{
-    background-color: rgba(36, 59, 94, 0.5);
-    margin-bottom: 0.5rem;
-    height: 3rem;
-}
-
-.prevision__jours--Trois{
-    background-color: rgba(36, 59, 94, 0.5);
-    margin-bottom: 0.5rem;
-    height: 3rem;
-}
-
-.prevision__btn{
-    height: 2rem;
-    padding: 0.5rem;
-    background-color: #243B5E;
+.prevision__titre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0rem auto 1rem auto;
     color: #DFE5F7;
+    width: 80%;
+    background-color: #243B5E;
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: none;
 }
 
 /******************* section jour *********************/
 
-
+>>>>>>> de30d46055eff6bcb0e911adb151e51369268ed0
 .jour__horaire{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 0.5rem;
+    max-width: 100vw;
+    margin: auto;
+    height: 7rem;
+    background-color: rgba(36, 59, 94, 0.5);
+    border-radius: 10px;  
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
-.jour__horaire--Un{
-    background-color: rgba(36, 59, 94, 0.5);  
-    width: 5rem;
-    height: 5rem;
-    border-radius: 10px;
+.jour__horaire__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 1rem;
 }
 
-.jour__horaire--Deux{
-    background-color: rgba(36, 59, 94, 0.5);  
-    width: 5rem;
-    height: 5rem;
-    border-radius: 10px;
-}
-
-.jour__horaire--Trois{
-    background-color: rgba(36, 59, 94, 0.5);  
-    width: 5rem;
-    height: 5rem;
-    border-radius: 10px;
+.jour__horaire__container--value{
+    max-height: 100%;
+    width: 4rem;
+    padding: 0.2rem;
+    font-size: 0.7rem;
 }
 
 .jour__technique{
     background-color: rgba(36, 59, 94, 0.5);
     margin-top: 0.5rem;
+    padding: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
 }
 
 .jour__indice{
-    background-color: rgba(36, 59, 94, 0.5);
+    margin-bottom: -2rem;
 }
 
+.IQA__btn{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    height: 2rem;
+    padding: 0.5rem;
+    background-color: #243B5E;
+    color: #DFE5F7;
+    border-radius: 4px;
+    border: none;
+    
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    background-color: rgba(36, 59, 94, 0.8);
+    color: #DFE5F7;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+  
+  #myBtn:hover {
+    background-color: #555;
+  }
 
 /********************** footer ************************/
 footer{
@@ -162,4 +237,16 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+/******************************************************/
+/******************************************************/
+/********************** responsive ********************/
+@media screen and (min-width: 768px){
+    .ApiTest__textIcon{
+        display: block;
+      }
+    .ApiTest__icon{
+        display: none;
+    }
 }
