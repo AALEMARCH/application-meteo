@@ -20,11 +20,23 @@
 <body>   
     <header>
 
-        <form class="recherche__ville" method="get"> 
-            <input type="text" class="recherche__ville__zoneTexte" id="name" name="name" required
-            minlength="1" maxlength="47" placeholder="Saisir la ville">
+        <form 
+        class="recherche__ville" 
+        method="get"> 
+            <input 
+            type="text" 
+            class="recherche__ville__zoneTexte" 
+            id="name" 
+            name="name" 
+            required
+            minlength="1" 
+            maxlength="47" 
+            placeholder="Saisir la ville">
 
-            <button class="ApiTest" type="submit" aria-label="bouton d'envoie du formulaire">
+            <button 
+            class="ApiTest" 
+            type="submit" 
+            aria-label="bouton d'envoie du formulaire">
                 <span class="ApiTest__textIcon">Rechercher</span>
                 <span class="ApiTest__icon"><i class="fa-solid fa-magnifying-glass"></i></span>
             </button>
@@ -78,44 +90,44 @@
         </div>
 
         <div class="jour__technique">
-            <div class="jour__technique--colonneUn">
+            <div class="jour__technique--colonne">
                 <div>
-                    <p class="jour__technique--ressentie">
-                        Ressentie
+                    <p class="jour__technique--ressentie, jour__technique--critere">
+                        Ressentie :
                     </p>
-                    <div class="jour__technique--ressentieV">
+                    <div class="jour__technique--ressentieV, jour__technique--valeur">
                         <span id="ressentie"></span>
                         <span>°C</span>
                     </div>
                 </div>
                 <div>
-                    <p class="jour__technique--vent">
-                        Vitesse du vent
+                    <p class="jour__technique--vent, jour__technique--critere">
+                        Vitesse du vent :
                     </p>
-                    <div class="jour__technique--ventV">
+                    <div class="jour__technique--ventV, jour__technique--valeur"">
                         <span id="vent"></span>
-                        <span>km/h</span>
+                        <span> km/h</span>
                     </div>
                 </div>
             </div>
 
-            <div class="jour__technique--colonneDeux">
+            <div class="jour__technique--colonne">
                 <div>
-                    <p class="jour__technique--humidite">
-                        Humidité
+                    <p class="jour__technique--humidite, jour__technique--critere">
+                        Humidité :
                     </p>
-                    <div class="jour__technique--humiditeV">
+                    <div class="jour__technique--humiditeV, jour__technique--valeur"">
                         <span id="humidite"></span>
                         <span>%</span>
                     </div>
                 </div>
                 <div>
-                    <p class="jour__technique--pression">
-                        Pression
+                    <p class="jour__technique--pression, jour__technique--critere">
+                        Pression :
                     </p>
-                    <div class="jour__technique--pressionV">
+                    <div class="jour__technique--pressionV, jour__technique--valeur"">
                         <span id="pression"></span>
-                        <span>mbar</span>
+                        <span> mbar</span>
                     </div>
                 </div>
                     <div class="jour__technique--uvV">

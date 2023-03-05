@@ -48,14 +48,14 @@ main{
 
 .recherche__ville__zoneTexte{
     border-right: none;
-  border-left: none;
-  border-top: 1px solid #f2f2f2;
-  border-bottom: 1px solid #f2f2f2;
-  border-radius: 5px;
-  padding: 0 24px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  width: 60%;
+    border-left: none;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    border-radius: 5px;
+    padding: 0 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 60%;
 }
 
 .ApiTest {
@@ -65,14 +65,23 @@ main{
     font-size: 1rem;
     font-weight: bold;
     border-radius: 0 15px 15px 0;
-    padding: 2px;
+    padding: 4px;
     cursor: pointer;
-    width: 20%;
   }
 
-  .ApiTest__textIcon{
+.ApiTest__textIcon{
     display: none;
-  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+  
+    .recherche__ville__zoneTexte, .ApiTest__textIcon, .ApiTest{
+        font-size: 2rem;
+    }
+   
+}
+
+
 
 
 
@@ -114,6 +123,31 @@ main{
     border-radius: 5px;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .hautDePage__ville{
+        font-size: 4rem;
+    }
+
+    .hautDePage__indice{
+        font-size: 1.5rem;
+    }
+
+    .hautDePage__temps{
+        font-size: 2rem;
+    }
+
+    .hautDePage__degre{
+        font-size: 6rem;
+    }
+
+    .hautDePage__degre--style{
+        font-size: 8rem;
+    }
+   
+}
+
+
+
 
 /****************** section prevision ******************/
 
@@ -124,7 +158,6 @@ main{
 
 .prevision, .prevision__titre{
     justify-content: center;
-
 }
 
 .prevision{
@@ -158,7 +191,21 @@ main{
     font-size: 1.5rem;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px){
 
+    .prevision__titreUn{
+        font-size: 2rem;
+    }
+
+    .prevision__jours, .jour__technique, .jour__indice{
+        font-size: 1.3rem;
+    }
+    .prevision__titre{
+        width: 50%;
+        font-size: 1.5rem;
+    }
+
+}
 
 
 
@@ -187,6 +234,10 @@ main{
     margin: 1rem;
 }
 
+.jour__technique--critere{
+    text-decoration: underline;
+}
+
 .jour__horaire__container--value{
     max-height: 100%;
     width: 4rem;
@@ -205,6 +256,13 @@ main{
     align-items: center;
     border-radius: 10px;
 }
+
+.jour__technique--critere, .jour__technique--valeur{
+    display: flex;
+    justify-content: center;
+}
+
+
 
 .jour__indice{
     margin-bottom: -2rem;
@@ -244,6 +302,14 @@ main{
   #myBtn:hover {
     background-color: #555;
   }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px){
+   .jour__indice{
+    width: 50%;
+    margin: auto;
+   }
+}
+
 
 /********************** footer ************************/
 footer{
