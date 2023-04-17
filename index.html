@@ -60,7 +60,7 @@
     </section>
 
     <section class="prevision">
-        <p class="prevision__titreUn">Prévision sur cinq jours</p>
+        <p class="prevision__titreUn">Prévisions sur cinq jours</p>
         <div class="prevision__jours">
             <div class="prevision__jours__container">
                 <div class="prevision__jours__container--dateUn"></div>
@@ -86,7 +86,7 @@
     </section>
 
     <section class="jour">
-        <p class="prevision__titre">Prévisions horaires sur 24 heures</p>
+        <p class="prevision__titre">Prévisions sur 24 heures</p>
         <div class="jour__horaire">
         </div>
 
@@ -94,7 +94,7 @@
             <div class="jour__technique--colonne">
                 <div>
                     <p class="jour__technique--ressentie, jour__technique--critere">
-                        Ressentie :
+                        Ressentie
                     </p>
                     <div class="jour__technique--ressentieV, jour__technique--valeur">
                         <span id="ressentie"></span>
@@ -103,7 +103,7 @@
                 </div>
                 <div>
                     <p class="jour__technique--vent, jour__technique--critere">
-                        Vitesse du vent :
+                        Vitesse du vent
                     </p>
                     <div class="jour__technique--ventV, jour__technique--valeur"">
                         <span id="vent"></span>
@@ -115,7 +115,7 @@
             <div class="jour__technique--colonne">
                 <div>
                     <p class="jour__technique--humidite, jour__technique--critere">
-                        Humidité :
+                        Humidité
                     </p>
                     <div class="jour__technique--humiditeV, jour__technique--valeur"">
                         <span id="humidite"></span>
@@ -124,7 +124,7 @@
                 </div>
                 <div>
                     <p class="jour__technique--pression, jour__technique--critere">
-                        Pression :
+                        Pression
                     </p>
                     <div class="jour__technique--pressionV, jour__technique--valeur"">
                         <span id="pression"></span>
@@ -138,7 +138,7 @@
             </div>           
         </div>
         <div class="jour__indice">
-            <button class="IQA__btn" aria-label="chemin vers la page de détail de l'IQA">Plus de détails sur l'IQA</button>
+            <a href="./html/qualite.html" class="IQA__btn" aria-label="chemin vers la page de détail de l'IQA">Plus de détails sur l'IQA</a>
         </div>
     </section>
 
@@ -147,14 +147,9 @@
 </main>
 
     <footer>
-        <div>
-            <P>Lien API:</P> 
-            <a href="https://openweathermap.org/">OpenWeather</a>
-        </div>
-        <div>
-            <p>Equipe technique:</p>
-            <a href="https://aalemarch.github.io/ReactPortfolio/">portfolio Lemarchand Antoine</a>
-            <div>portfolio Mellet Steeve</div>
+        <div class="footer_container">
+            <div class="footer_text">Données fournis par <a href="https://openweathermap.org/" class="footer--linkColor">OpenWeather</a></div>   
+            <div class="footer_text">Site web réalisé par <a href="https://aalemarch.github.io/ReactPortfolio/" class="footer--linkColor">Antoine Lemarchand</a> et <a href="#" class="footer--linkColor">Steeve Mellet</a></div>
         </div>
     </footer>
   

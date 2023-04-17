@@ -138,6 +138,30 @@ btn.addEventListener("click", (e) => {
 
           // Switch Case pour la selection des valeur d'indice de qualité de l'air
           let valeur = IQ.list[0].main.aqi;
+          let addLocalStorage = {
+            IQA: IQ.list[0].main.aqi,
+            monoxyde_de_carbone: IQ.list[0].components.co,
+            monoxyde_azote: IQ.list[0].components.no,
+            dioxyde_azote: IQ.list[0].components.no2,
+            Ozone: IQ.list[0].components.o3,
+            dioxyde_souffre: IQ.list[0].components.so2,
+            particules_fines: IQ.list[0].components.pm2_5,
+            matières_particulaires_grossières: IQ.list[0].components.pm10,
+            Ammoniac: IQ.list[0].components.nh3,
+          };
+          console.log(addLocalStorage);
+
+          let iqaTable = JSON.parse(localStorage.getItem("iqa"));
+
+          if (iqaTable) {
+            iqaTable.push(addLocalStorage);
+            localStorage.setItem("iqa", JSON.stringify(iqaTable));
+          } else {
+            iqaTable = [];
+            iqaTable.push(addLocalStorage);
+            localStorage.setItem("iqa", JSON.stringify(iqaTable));
+          }
+
           if (valeur != "") {
             switch (valeur) {
               case 1:
