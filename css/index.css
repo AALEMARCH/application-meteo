@@ -69,28 +69,50 @@ main{
     font-weight: bold;
     border-radius: 0 15px 15px 0;
     padding: 4px;
+    margin: 0px 0px 0px -2px;
     cursor: pointer;
   }
 
 .ApiTest:hover{
-    background: rgba(36, 59, 94, 0.5);
-    color: black;
-    transition-duration: 0.1s;
+    scale: 1.07;
+    transition-duration: 0.2s;
+}
+
+.ApiTest:disabled{
+    background: lightgrey;
+    color: #243B5E;
+}
+
+.ApiTest:disabled:hover{
+    scale: 1;
 }
 
 .ApiTest__textIcon{
     display: none;
 }
 
+.formError{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.error{
+    font-size: 1.1rem;
+    margin: 0.5rem;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1024px){
   
-    .recherche__ville__zoneTexte, .ApiTest__textIcon, .ApiTest{
+    .recherche__ville__zoneTexte, .ApiTest__textIcon, .ApiTest, .error{
         font-size: 1.3rem;
     }  
 }
 @media screen and (min-width: 1025px){
   
-    .recherche__ville__zoneTexte, .ApiTest__textIcon, .ApiTest{
+    .recherche__ville__zoneTexte, .ApiTest__textIcon, .ApiTest, .error{
         font-size: 1.5rem;
     }  
 }
