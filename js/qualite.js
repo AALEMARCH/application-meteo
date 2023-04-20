@@ -1,8 +1,28 @@
 // Récupération des infos du localStorage
 let iqaRecovery = JSON.parse(localStorage.getItem("iqa"));
 
+// Vérification si une valeur est récupérée depuis le localStorage
+if (!iqaRecovery) {
+  alert(
+    "veuillez selectionner une ville sur la page d'accueil si vous souhaitez connaitre votre indice de qualité de l'air"
+  );
+
+  // Modifier les éléments HTML pour afficher un message indiquant qu'aucune ville n'est sélectionnée
+  let indice = document.querySelector(".iqa__indice");
+
+  let val = document.querySelector(".iqa__value");
+
+  indice.innerHTML = "Aucune selection";
+  indice.style.color = "red";
+
+  val.innerHTML = "Aucune selection";
+  val.style.color = "red";
+}
+
+// Récupération de l'élément HTML pour l'affichage de l'IQA
 let iqaTarget = document.querySelector(".iqa__indice");
 
+// Vérification si une valeur est récupérée depuis le localStorage et modification de l'affichage en conséquence
 if (iqaRecovery[0].IQA != "") {
   switch (iqaRecovery[0].IQA) {
     case 1:
@@ -35,6 +55,7 @@ if (container) {
   // Parcourir chaque paire clé-valeur et créer une div pour chaque à partir de la deuxieme itération
   let counter = 0;
   for (const [cle, valeur] of Object.entries(iqaRecovery[0])) {
+    // La première itération de la boucle est ignorée car elle contient l'IQA, qui est affiché ailleurs
     if (counter === 0) {
       counter++;
       continue;
@@ -54,5 +75,4 @@ let backButton = document.querySelector(".backHome");
 backButton = document.addEventListener("click", (e) => {
   localStorage.clear();
   window.location.href;
-  // window.location.pathname = "/index.html";
 });

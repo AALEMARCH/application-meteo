@@ -4,7 +4,7 @@ const TIME_OPTIONS = {
 };
 
 function createScrollToTopButton() {
-  // boutton scroll to top
+  // Bouton scroll to top
   const scrollBtn = document.getElementById("myBtn");
 
   // Fonction pour obtenir la position actuelle de défilement
@@ -24,7 +24,7 @@ function createScrollToTopButton() {
     }
   }
 
-  // montre le boutton apres 20px de scroll
+  // Montre le bouton après 20px de scroll
   window.onscroll = function () {
     scrollFunction();
   };
@@ -41,7 +41,7 @@ createScrollToTopButton();
 const updateHoraires = (horairesJournee) => {
   // Constante pour les options de formatage des horaires
 
-  // Fonction pour formatter les horaires
+  // Fonction pour formater les horaires
   const formatTime = (time) =>
     new Date(time).toLocaleTimeString("fr-fr", TIME_OPTIONS);
 
@@ -56,7 +56,7 @@ const updateHoraires = (horairesJournee) => {
     jourHoraire.removeChild(jourHoraire.firstChild);
   }
 
-  // boucle pour remplir les informations dans les éléments d'horaires
+  // Boucle pour remplir les informations dans les éléments d'horaires
   for (const horaire of horairesJournee) {
     let horaireIndividuelConteneur = document.createElement("div");
     jourHoraire.appendChild(horaireIndividuelConteneur);
@@ -65,7 +65,7 @@ const updateHoraires = (horairesJournee) => {
       "jour__horaire__container"
     );
 
-    // ajouter une option (aujourdhui / demain) au tableau horaireList
+    // Ajouter une option (aujourd'hui / demain) au tableau horaireList
     function isToday(timestamp) {
       let date = new Date(timestamp * 1000);
       let today = new Date();
@@ -165,32 +165,22 @@ document.querySelector("form").addEventListener("submit", (e) => {
 
 btn.addEventListener("click", (e) => {
   e.preventDefault();
-  if (formIsValid()) {
-    // Envoyer la requête AJAX
-  } else {
-    addErrorMessage();
-  }
-});
 
-btn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  // stockage de l'input
+  // Stockage de l'input
   let input = document.getElementById("name").value;
 
   const APIKEY = "84e4aef03092973b527b8bfa07fe33b5";
 
   let geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${input}&appid=${APIKEY}`;
 
-  // geocodage du nom de la ville en latitude et longitude
+  // Geocodage du nom de la ville en latitude et longitude
   fetch(geoUrl)
     .then((res) => res.json())
     .then((data) => {
       const cityName = document.querySelector(".hautDePage__ville");
       cityName.textContent = data[0].name;
 
-      // Creer une page au click sur IQA avec tous les indices de pollution detailler
-      // appel api des donnée de polution
+      // Appel api des données de pollution
       fetch(
         `http://api.openweathermap.org/data/2.5/air_pollution?lat=${data[0].lat}&lon=${data[0].lon}&appid=${APIKEY}`
       )
@@ -226,7 +216,7 @@ btn.addEventListener("click", (e) => {
             localStorage.setItem("iqa", JSON.stringify(iqaTable));
           }
 
-          // Switch Case pour la selection des valeur d'indice de qualité de l'air
+          // Switch Case pour la sélection des valeurs d'indice de qualité de l'air
           let valeur = IQ.list[0].main.aqi;
 
           if (valeur != "") {
@@ -257,13 +247,13 @@ btn.addEventListener("click", (e) => {
           console.error(error);
         });
 
-      // appel api de la météo actuelle et conversion en degree celcius
+      // Appel api de la météo actuelle et conversion en degré Celsius
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${data[0].lat}&lon=${data[0].lon}&appid=${APIKEY}&units=metric&lang=fr`
       )
         .then((res) => res.json())
         .then((meteo) => {
-          // ont défini les selecteur avec un S comme Selecteur
+          // Défini les selecteurs avec un S comme Sélecteur
           const meteoS = document.querySelector(".hautDePage__temps");
           const temperatureS = document.querySelector(
             ".hautDePage__degre--style"
@@ -273,14 +263,14 @@ btn.addEventListener("click", (e) => {
           const pressionS = document.getElementById("pression");
           const vitesseVentS = document.getElementById("vent");
 
-          // ont crée des variables pour les valeurs numériques afin d'arrondir le resultat à l'entier le plus proche
+          // Création des variables pour les valeurs numériques afin d'arrondir le résultat à l'entier le plus proche
           let degValue = meteo.main.temp;
           let ressentieValue = meteo.main.feels_like;
           let humiditeValue = meteo.main.humidity;
           let pressionValue = meteo.main.pressure;
           let vitesseVentValue = meteo.wind.speed;
 
-          // ont écrit le résultat dans le html
+          // Ecrire le résultat dans le html
           meteoS.textContent = meteo.weather[0].description;
           temperatureS.textContent = Math.round(degValue);
           ressentieS.textContent = Math.round(ressentieValue);
@@ -481,6 +471,7 @@ btn.addEventListener("click", (e) => {
       )
         .then((res) => res.json())
         .then((prevision) => {
+          // Tableau de sélecteurs CSS pour les conteneurs de date
           const previsionContainers = [
             ".prevision__jours__container--dateUn",
             ".prevision__jours__container--dateDeux",
@@ -489,6 +480,7 @@ btn.addEventListener("click", (e) => {
             ".prevision__jours__container--dateCinq",
           ];
 
+          // Tableau de sélecteurs CSS pour les conteneurs de météo
           const previsionMeteos = [
             ".prevision__jours__container--meteoUn",
             ".prevision__jours__container--meteoDeux",
@@ -497,6 +489,7 @@ btn.addEventListener("click", (e) => {
             ".prevision__jours__container--meteoCinq",
           ];
 
+          // Tableau des valeurs de date/heure de la prévision météo pour les cinq prochains jours
           const previsionValues = [
             prevision.list[0].dt_txt,
             prevision.list[8].dt_txt,
@@ -505,6 +498,7 @@ btn.addEventListener("click", (e) => {
             prevision.list[32].dt_txt,
           ];
 
+          // Options de formatage pour la méthode toLocaleDateString()
           const options = {
             weekday: "long",
             year: "numeric",
@@ -512,13 +506,15 @@ btn.addEventListener("click", (e) => {
             day: "numeric",
           };
 
+          // Boucle pour mettre à jour les conteneurs de date et de météo
           for (i = 0; i < previsionContainers.length; i++) {
             const previsionContainer = document.querySelector(
               previsionContainers[i]
             );
             const previsionMeteo = document.querySelector(previsionMeteos[i]);
-            const date = new Date(previsionValues[i]);
 
+            // Conversion de la valeur de date en objet Date et affichage dans le conteneur correspondant
+            const date = new Date(previsionValues[i]);
             previsionContainer.textContent = date.toLocaleDateString(
               "fr-fr",
               options
