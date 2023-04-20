@@ -251,7 +251,7 @@ main{
     color: #DFE5F7;
     font-size: 1.5rem;
     margin: 0px 5px -5px 5px;
-    background-color: rgba(36, 59, 94, 0.5);;
+    background-color: rgba(36, 59, 94, 0.5);
     border: 1px solid white;
     padding: 0.5rem 0.5rem 0rem 0.5rem;
     border-radius: 10px 10px 0px 0px;
@@ -293,9 +293,6 @@ main{
 }
 
 @media screen and (min-width: 1330px){
-    /* .prevision__titreUn{
-        color: black;
-    } */
     .prevision__titreUn{
         display: flex;
         justify-content: center;
@@ -304,7 +301,7 @@ main{
         width: 100%;
         color: #DFE5F7;
         font-size: 1.9rem;
-        background-color: rgba(36, 59, 94, 0.5);;
+        background-color: rgba(36, 59, 94, 0.5);
         padding: 0.5rem 0.5rem 0rem 0.5rem;
         border-radius: 10px 10px 0px 0px;
         border: none;
@@ -418,6 +415,13 @@ align-items: center;
     background-color: #555;
   }
 
+  @media screen and (max-width: 320px){
+    .jour__technique{
+        margin: 0px;
+        border-radius: 0px;
+    }
+  }
+
   @media screen and (min-width: 870px){
     .jour__horaire{
         justify-content: center;
@@ -494,6 +498,11 @@ footer{
 /******************************************************/
 /********************** qualite.html ********************/
 
+nav{
+    width: 100%;
+    margin: -10px;
+}
+
 .backHome{
     font-size: 2.5rem;
     margin: 0.5rem 1.5rem;
@@ -509,11 +518,6 @@ transition-duration: 1s;
     background-color: rgba(36, 59, 94, 0.5);
     border-radius: 10px;
     padding: 1rem;
-    width: 70%;
-    position: absolute; 
-    left: 50%;
-    top: 50%; 
-    transform: translate(-50%, -50%);    
 } 
 
 .iqArea{
@@ -522,6 +526,35 @@ transition-duration: 1s;
     justify-content: center;
     align-items: center;
 }
+
+
+.aqiDetail{
+    border: 1px solid white;
+    width: 6rem;
+}
+
+.iqa__value{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+td, th {
+    border: 1px solid black;
+    padding: 8px;
+}
+  
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
 
 @media screen and (max-width: 320px){
 
@@ -533,7 +566,6 @@ transition-duration: 1s;
     .iqAreaContainer{
         width: 100%;
         border-radius: 0px;
-        padding: 0.2rem 0.2rem 2rem 0.2rem;
     }
 }
 
@@ -542,10 +574,107 @@ transition-duration: 1s;
         font-size: 2rem;
         margin: 0.5rem 1rem;
     }
-
     .iqAreaContainer{
-        width: 85%;
         border-radius: 10px;
         padding: 0.5rem 0.5rem 2rem 0.5rem;
     }
 }
+
+@media screen and (min-width: 425px) {
+    .iqAreaContainer{
+        background-color: rgba(36, 59, 94, 0.5);
+        border-radius: 10px;
+        padding: 1rem;
+        width: 80%;
+        margin: auto;
+    } 
+}
+
+@media screen and (max-width: 768px) {
+    table {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .nom{
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .nom::before{
+        content: "IQA : ";
+        white-space: pre;
+    }
+
+    .indice::before{
+        content: "Indice : ";
+        white-space: pre;
+    }
+
+    .so2::before{
+        content: "SO2 : ";
+        white-space: pre;
+    }
+
+    .no2::before{
+        content: "NO2 : ";
+        white-space: pre;
+    }
+    
+    .pm10::before{
+        content: "PM10 : ";
+        white-space: pre;
+    }
+
+    .pm2::before{
+        content: "PM2.5 : ";
+        white-space: pre;
+    }
+
+    .o3::before{
+        content: "O3 : ";
+        white-space: pre;
+    }
+
+    .co::before{
+        content: "CO : ";
+        white-space: pre;
+    }
+
+    table thead {
+        display: none;
+      }
+  
+    tbody, tr, td, th {
+      display: block;
+    }
+  
+    tr {
+      border: none;
+      border-bottom: 1px solid black;
+      margin-bottom: 10px;
+    }
+  
+    td {
+      border-bottom: 1px solid black;
+    }
+  
+    td:before {
+      content: attr(data-title);
+      float: left;
+      font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .iqAreaContainer{
+        width: 70%;
+        overflow: hidden;
+        position: absolute; 
+        left: 50%;
+        top: 50%; 
+        transform: translate(-50%, -50%);    
+    } 
+}
+  

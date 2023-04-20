@@ -2,17 +2,16 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <title>Application Météo</title>
+    <meta name="description"
+            content="Application Météo - Site web qui fait appel à l'API OpenWeather - travaille en équipe avec Antoine Lemarchand et Steeve Mellet - Développeur Web - HTML - CSS - Javascript -">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Application Meteo</title>
+    <meta name="robots" content="index,follow">
+    
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/normalize.css">
-    <meta name="title" content="Application Meteo homepage">
-
-    <meta name="description"
-          content="Application Meteo - Site web qui fait appel à l'API OpenWeather - travaille en équipe avec Antoine Lemarchand et Steeve Mellet - Développeur Web - HTML - CSS - Javascript -">
 
     <script src="https://kit.fontawesome.com/fb14b9bbe3.js" crossorigin="anonymous"></script>
 
@@ -20,30 +19,30 @@
 
 <body>   
     <header>
-<div class="formError">
-        <form 
-        class="recherche__ville" 
-        method="get"> 
-            <input 
-            type="text" 
-            class="recherche__ville__zoneTexte" 
-            id="name" 
-            name="name" 
-            required
-            minlength="1" 
-            maxlength="47" 
-            placeholder="Saisir la ville">
+        <div class="formError">
+            <form 
+            class="recherche__ville" 
+            method="get"> 
+                <input 
+                type="text" 
+                class="recherche__ville__zoneTexte" 
+                id="name" 
+                name="name" 
+                required
+                minlength="1" 
+                maxlength="47" 
+                placeholder="Saisir la ville">
 
-            <button 
-            class="ApiTest" 
-            type="submit" 
-            aria-label="bouton d'envoie du formulaire">
-                <span class="ApiTest__textIcon">Rechercher</span>
-                <span class="ApiTest__icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-            </button>
-    
-        </form>
-</div>
+                <button 
+                class="ApiTest" 
+                type="submit" 
+                aria-label="bouton d'envoie du formulaire">
+                    <span class="ApiTest__textIcon">Rechercher</span>
+                    <span class="ApiTest__icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                </button>
+        
+            </form>
+        </div>
     </header>
 
 <main>     
@@ -154,6 +153,6 @@
         </div>
     </footer>
   
- <script src="js/index.js" defer></script>
+    <script src="js/index.js" defer></script>
 </body>
 </html>

@@ -2,17 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-
+    <meta name="description" content="Application Meteo - détail des polluants présent dans l'air">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
 
-    <title>Application Meteo</title>
+    <title>Application Météo</title>
+
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/normalize.css">
-    <meta name="title" content="Application Meteo page de détail de la qualité de l'air">
-
-    <meta name="description"
-          content="Application Meteo - Site web qui fait appel à l'API OpenWeather - travaille en équipe avec Antoine Lemarchand et Steeve Mellet - Développeur Web - HTML - CSS - Javascript -">
 
     <script src="https://kit.fontawesome.com/fb14b9bbe3.js" crossorigin="anonymous"></script>
 
@@ -21,27 +19,89 @@
 <body>   
     
     <section class="iqAreaContainer">
-    <nav>
-            <div class="backHome"><a href="../index.html"><i class="fa-regular fa-square-caret-left"></i></a></div>
-    </nav>
-    <div class="iqArea">
-         <h1>Indice de qualité de l'air</h1>
+        <nav>
+                <div class="backHome"><a href="../index.html"><i class="fa-regular fa-square-caret-left"></i></a></div>
+        </nav>
+        <div class="iqArea">
+            <h1>Indice de qualité de l'air</h1>
 
             <div class="iqa__indice"></div>
 
-            <h2>détails des differentes valeurs</h2>
-            <div class="iqa__value">
-            </div>
-    </div>
-
-    <!-- <nav>
-        <div class="aqiDetail" aria-label="lien vers le site accuweather - détail de la qualité de l'air"><a href="https://www.accuweather.com/fr/fr/gaillon/2608407/air-quality-index/2608407" target="_blank">accuweather</a></div>
-    </nav> -->
-       
+            <h2 class="iqa__title">Détails des différents polluants</h2>
+            <div class="iqa__value"></div>
+        </div>
+        <div class="iqaTable">
+            <h2>Description des niveaux d'indice de qualité de l'air</h2>
+            <table>
+                <thead>
+                  <tr>
+                    <th>Nom qualitatif</th>
+                    <th>Indice</th>                
+                    <th>SO2</th>
+                    <th>NO2</th>
+                    <th>PM10</th>
+                    <th>PM2,5</th>
+                    <th>O3</th>
+                    <th>CO</th>
+                    </tr>
+                </thead> 
+                
+                <tbody>
+                  <tr>
+                    <td class="nom">Bon</td>
+                    <td class="indice">1</td>
+                    <td class="so2">0-20</td>
+                    <td class="no2">0-40</td>
+                    <td class="pm10">0-20</td>
+                    <td class="pm2">0-10</td>
+                    <td class="o3">0-60</td>
+                    <td class="co">0-4400</td>
+                  </tr>
+                  <tr>
+                    <td class="nom">Passable</td>
+                    <td class="indice">2</td>
+                    <td class="so2">20-80</td>
+                    <td class="no2">40-70</td>
+                    <td class="pm10">20-50</td>
+                    <td class="pm2">10-25</td>
+                    <td class="o3">60-100</td>
+                    <td class="co">4400-9400</td>
+                  </tr>
+                  <tr>
+                    <td class="nom">Modéré</td>
+                    <td class="indice">3</td>
+                    <td class="so2">80-250</td>
+                    <td class="no2">70-150</td>
+                    <td class="pm10">50-100</td>
+                    <td class="pm2">25-50</td>
+                    <td class="o3">100-140</td>
+                    <td class="co">9400-12400</td>
+                  </tr>
+                  <tr>
+                    <td class="nom">Mauvais</td>
+                    <td class="indice">4</td>
+                    <td class="so2">250-350</td>
+                    <td class="no2">150-200</td>
+                    <td class="pm10">100-200</td>
+                    <td class="pm2">50-75</td>
+                    <td class="o3">140-180</td>
+                    <td class="co">12400-15400</td>
+                  </tr>
+                  <tr>
+                    <td class="nom">Très mauvais</td>
+                    <td class="indice">5</td>
+                    <td class="so2">&gt;350</td>
+                    <td class="no2">&gt;200</td>
+                    <td class="pm10">&gt;200</td>
+                    <td class="pm2">&gt;75</td>
+                    <td class="o3">&gt;180</td>
+                    <td class="co">&gt;15400</td>
+                  </tr>
+                </tbody>
+              </table>    
+        </div>
     </section>
 
-
-  
- <script src="../js/qualite.js" defer></script>
+  <script src="../js/qualite.js" defer></script>
 </body>
 </html>

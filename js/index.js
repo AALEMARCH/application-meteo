@@ -186,12 +186,6 @@ btn.addEventListener("click", (e) => {
   fetch(geoUrl)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data[0]);
-      console.log(data[0].country);
-      console.log(data[0].state);
-      console.log(data[0].lat);
-      console.log(data[0].lon);
-
       const cityName = document.querySelector(".hautDePage__ville");
       cityName.textContent = data[0].name;
 
@@ -202,22 +196,11 @@ btn.addEventListener("click", (e) => {
       )
         .then((res) => res.json())
         .then((IQ) => {
-          console.log(IQ.list[0].main.aqi); // IQA 1=bon 2=passable 3=modéré 4=mauvais 5=très mauvais
-          console.log(IQ.list[0].components.co); // monoxyde de carbone µg/m³
-          console.log(IQ.list[0].components.no); // monoxyde d'azote µg/m³
-          console.log(IQ.list[0].components.no2); // dioxyde d'azote µg/m³
-          console.log(IQ.list[0].components.o3); // Ozone µg/m³
-          console.log(IQ.list[0].components.so2); // dioxyde de souffre µg/m³
-          console.log(IQ.list[0].components.pm2_5); // particules fines µg/m³
-          console.log(IQ.list[0].components.pm10); // matières particulaires grossières µg/m³
-          console.log(IQ.list[0].components.nh3); // Ammoniac µg/m³
-
           const iqaValueS = document.querySelector(".hautDePage__indice");
 
-          // Switch Case pour la selection des valeur d'indice de qualité de l'air
-          let valeur = IQ.list[0].main.aqi;
+          // Créer un objet `addLocalStorage` qui contient les données sur la qualité de l'air à stocker
           let addLocalStorage = {
-            IQA: IQ.list[0].main.aqi,
+            IQA: IQ.list[0].main.aqi, // L'indice de qualité de l'air
             "monoxyde de carbone": IQ.list[0].components.co,
             "monoxyde d'azote": IQ.list[0].components.no,
             "dioxyde d'azote": IQ.list[0].components.no2,
@@ -227,11 +210,14 @@ btn.addEventListener("click", (e) => {
             "matières particulaires grossières": IQ.list[0].components.pm10,
             Ammoniac: IQ.list[0].components.nh3,
           };
-          console.log(addLocalStorage);
 
+          // Récupérer les données stockées localement dans le navigateur
           let iqaTable = JSON.parse(localStorage.getItem("iqa"));
 
+          // Si des données existent déjà
           if (iqaTable) {
+            localStorage.removeItem("iqa");
+            iqaTable = [];
             iqaTable.push(addLocalStorage);
             localStorage.setItem("iqa", JSON.stringify(iqaTable));
           } else {
@@ -239,6 +225,9 @@ btn.addEventListener("click", (e) => {
             iqaTable.push(addLocalStorage);
             localStorage.setItem("iqa", JSON.stringify(iqaTable));
           }
+
+          // Switch Case pour la selection des valeur d'indice de qualité de l'air
+          let valeur = IQ.list[0].main.aqi;
 
           if (valeur != "") {
             switch (valeur) {
@@ -274,8 +263,6 @@ btn.addEventListener("click", (e) => {
       )
         .then((res) => res.json())
         .then((meteo) => {
-          console.log(meteo);
-
           // ont défini les selecteur avec un S comme Selecteur
           const meteoS = document.querySelector(".hautDePage__temps");
           const temperatureS = document.querySelector(
@@ -494,8 +481,6 @@ btn.addEventListener("click", (e) => {
       )
         .then((res) => res.json())
         .then((prevision) => {
-          console.log(prevision);
-
           const previsionContainers = [
             ".prevision__jours__container--dateUn",
             ".prevision__jours__container--dateDeux",
@@ -545,7 +530,6 @@ btn.addEventListener("click", (e) => {
           // Sélection des horaires sur 24 heures uniquement
           let horaires = prevision.list;
           let horairesJournee = horaires.slice(0, 9);
-          console.log(horairesJournee);
 
           updateHoraires(horairesJournee);
         })
